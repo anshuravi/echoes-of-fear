@@ -48,12 +48,12 @@ const story = [
     },
     {//Into the fear dimension 6 -- to be done pathway illustration
         text: "Air whooshes past you, your reflection glaring back at you through shattered shards as you descend the chasm. The spirit's cackle bellows as you fall down darkness surrounding you, 'Into madness you go.' You feel yourself come to a standstill, as two illuminated pathways take shape in front of you.",
-       // image: "images-js/foyer.jpg",
+        image: "pathways.png",
         choices: ["Right", "Left"]
     },
     {//Right (Judgement fear) 7 -- to be done -- eyes illustration
         text: "You are drawn through a darkened room, shadows clinging to every corner, no hint of light visible. The air is thick as silence follows your every turn creating an endless stillness. You place one foot in front of the other. Through the darkness, two eyes flicker open, red irises glaring like distant stars lost in an abyss. You are no longer alone.",
-       // image: "images-js/gargoyle.png",
+        image: "eyes.png",
         choices: [ "Confront", "Befriend"]
     },
     {//Run Away 8
@@ -62,18 +62,18 @@ const story = [
        // choices: ["Descend"]
     },
     {//Confront 9n-- to be done -- 
-        text: "Opening your eyes, you take a closer look. Those irises are not unfamiliar. A laugh escapes from your lips. Judgement is strongest in the ones we know.",
+        text: "Opening your eyes, you take a closer look. Those irises are not unfamiliar. A laugh escapes from your lips.",
        // image: "images-js/locket.jpeg",
         choices: ["Confront the Spirit"]
     },
     {//Confront 10 -- to be done -- cloak illustration
         text: "As you lock eyes with the spirit a chill runs down your spine. The booming voice echoes once again, 'I measure every debate, yet I am without weight. What am I?' ",
-     //   image: "images-js/gallery.jpeg",
+      image: "confront.png",
         answer: "judgement", // Correct answer
         choices: ["Answer the Riddle"]
     },
     {//Ascend 11
-        text: "The air surrounding you descends within seconds. Then you are falling - no, soaring. You weave through chasms and towers, shards of mirrors guiding you through the air. The scattered reflections splinter but leave no cuts. A shatter become whole, and once again you are placed in the room of smoke and mirrors.",
+        text: "You slowly drift your eyes shut feeling the darkness engulf you, the dreary pair of irises no longer in site. A breath in and a breath out, the eyes no longer stare. The darkness that once clinged to you, begins to fall like dripping paint across your limbs. Glimmers of light breach through the thickened blackness.",
       //  image: "images-js/study.jpeg",
         choices: ["Ascend the Fear Dimension"]
     },
