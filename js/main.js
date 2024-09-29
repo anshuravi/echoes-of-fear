@@ -2,81 +2,85 @@
 const storyText = document.getElementById('story-text');
 const choice1Button = document.getElementById('choice1');
 const choice2Button = document.getElementById('choice2');
+const choice3Button = document.getElementById('choice3'); // New button
 const storyImage = document.getElementById('story-image'); 
 const finalText1 = document.getElementById('final-text-1');
 const finalText2 = document.getElementById('final-text-2');
 const backgroundAudio = document.getElementById('background-audio');
+const riddleInput = document.getElementById('riddle-answer'); // New input
+const submitAnswerButton = document.getElementById('submit-answer'); // New button
 // Initial story state
 let storyState = 0;
 //Audio inputs
 backgroundAudio.src = 'pipe-organ.mp3';
 backgroundAudio.loop = true;
-//The Story 
+//The Story 0
 const story = [
-    {
-        text: "Knight Mansion",
-        image: "images-js/london.jpeg",
-        choices: ["The Game is Afoot"]
+    {// gate illustrtion
+        text: "Echoes of Fear", 
+        image: "door3.png",
+        choices: ["Start Story"]
     },
-    { //Starting fork 1
-        text: "Fog rolls off the Thames seeping into the darkest corners of London as you find yourself strolling across darkened alleyways. A cautionary tale begins as you find yourself at a fork in the road.",
-        image: "images-js/alley2.jpeg",
-        choices: ["Go Left", "Go Right"],
+    { //Starting screen 1 - candle illustration
+        text: "A single wavering flame blinks across your eyes, the rest of the room engulfed in an eerie darkness. The blaze wavers and the brightness surges, luring you further into the expanse. A single step forward echoes against the walls.",
+        image: "candleflame.png",
+        choices: ["Enter the room", "Run Away"],
     },
-    {//Go left 2
-        text: "As you follow down the left path, a young orphan whirls past you, like a ghost in the night. Your hand reaches into the pocket of your coat feeling the absence your last shilling. Intead, you find a beaten up scrap of paper. Unfolding the crinkles, the paper reads 'She got what she deserved.' Under the blood red ink sits an engraving of the Knight family crest. ",
-        image: "images-js/note.png",
-        choices: ["Proceed to the mansion"]
+    { //Run Away 2 
+        text: "'You ran away in fear, but the darkness consumed you'",
+       // image: "images-js/mirrorshatter2.png",
+        choices: ["Restart Story"],
     },
-    {//Go right 3
-        text: "You follow the right path, bumping head first into a member of the Scotland Yard. Apologizing profusely you collect yourself. The officer looks at you intently before speaking, 'Detective, a murder has taken place at Knight Mansion last evening. I must entrust you with solving the case.' Without another word, he disappears into the mist. ",
-        image: "images-js/yard.jpeg",
-        choices: ["Proceed to the mansion"]
+    {//Accept or Reject the spirit 3 - mirror with hand sticking out
+        text: "Once echoed steps come to an abrupt halt, the flickering flames following. Silence. A shiver bolts through your spine. A swirling heavy dense of clouds winds like vines twining through limbs. Crack. A cacophony erupts, mirrors crumbling to the floor. A cloaked figure appears through the mist, a gloved hand reaching toward you.",
+        image: "mirror1.png",
+        choices: ["Extend Your Hand", "Reject the Spirit"]
     },
-    {//proceed to the mansion 4
-        text: "As you proceed to the mansion a clouded scene engulfs you. Thorn eyed creatures perch atop the adorned structure, eyes following every step you take. Gothic towers loom in the distance. Woven strands of cobwebs tangle across the mansions entrance almost preventing you from entering.",
-        image: "images-js/mansion.jpeg",
-        choices: ["Enter the mansion", "Run Away"]
+    {//Reject the spirit 4 - shattered glass spiral
+        text: " An inhumane growl errupts from the cloak shifting the room. 'No,' A simple strangled cry. 'No!' The figure bellows, the once saddened cry growing  enraged. Tormented angry cries echo through the mirrors, when a pull forces you forward through the shattered glass.  ",
+        image: "mirrorshards.png",
+        choices: ["Enter the fear dimension"]
     },
-    {//Enter the mansion 5
-        text: "As you approach the entrance of the mansion, the door creaks open with a groan, illuminating a foyer crawling with shadows. A single chandelier trembles, threatening to collapse through the floor. A voice echoes through the room, 'Welcome.' A man in a tailcoat approaches, his voice laced with unnerving charm.",
-        image: "images-js/foyer.jpg",
-        choices: ["Explore the mansion"]
+    {//Accept the spirit 5
+        //text: "You extend your hand out, as a gloved hand entwines your fingers. Ghosted arias surround you each note blowing like ripples through the air. The spirit is welcoming you, guiding you through a world of fear.",
+       // image: "images-js/mansion.jpeg",
+       // choices: [""]
     },
-    {//Run Away 6 ------------- YOU RUN AWAY START AGAIN
-        text: "You choose to turn away bolting from the manor and back into the moonlight. The second light hits your facade, the gargoyle perched atop the manor shifts his mouth ever so slightly. Within moments your life flashes before your eyes, an arrow shooting from the creatures jaw.",
-        image: "images-js/gargoyle.png",
+    {//Into the fear dimension 6 -- to be done pathway illustration
+        text: "Air whooshes past you, your reflection glaring back at you through shattered shards as you descend the chasm. The spirit's cackle bellows as you fall down darkness surrounding you, 'Into madness you go.' You feel yourself come to a standstill, as two illuminated pathways take shape in front of you.",
+       // image: "images-js/foyer.jpg",
+        choices: ["Right", "Left"]
+    },
+    {//Right (Judgement fear) 7 -- to be done -- eyes illustration
+        text: "You are drawn through a darkened room, shadows clinging to every corner, no hint of light visible. The air is thick as silence follows your every turn creating an endless stillness. You place one foot in front of the other. Through the darkness, two eyes flicker open, red irises glaring like distant stars lost in an abyss. You are no longer alone.",
+       // image: "images-js/gargoyle.png",
+        choices: [ "Confront", "Befriend"]
+    },
+    {//Run Away 8
+       // text: "Without hesitation, you bolt out of the room, heart pounding, a primal instinct driving you forward. Your body pushes forward, but your feet remain motionless in a standstill. A pull forces you down into the Earth sinking deeper... into the next fear.",
+       // image: "images-js/ballroom.jpg",
+       // choices: ["Descend"]
+    },
+    {//Confront 9n-- to be done -- 
+        text: "Opening your eyes, you take a closer look. Those irises are not unfamiliar. A laugh escapes from your lips. Judgement is strongest in the ones we know.",
+       // image: "images-js/locket.jpeg",
+        choices: ["Confront the Spirit"]
+    },
+    {//Confront 10 -- to be done -- cloak illustration
+        text: "As you lock eyes with the spirit a chill runs down your spine. The booming voice echoes once again, 'I measure every debate, yet I am without weight. What am I?' ",
+     //   image: "images-js/gallery.jpeg",
+        answer: "judgement", // Correct answer
+        choices: ["Answer the Riddle"]
+    },
+    {//Ascend 11
+        text: "The air surrounding you descends within seconds. Then you are falling - no, soaring. You weave through chasms and towers, shards of mirrors guiding you through the air. The scattered reflections splinter but leave no cuts. A shatter become whole, and once again you are placed in the room of smoke and mirrors.",
+      //  image: "images-js/study.jpeg",
+        choices: ["Ascend the Fear Dimension"]
+    },
+    {//You Die 12
+        text: "A cackle errupts from the spirit, 'Wrong!' it bellows in a teasing blow. 'Welcome to your new home,' ",
+      //  image: "images-js/vault.jpeg",
         choices: ["Replay"]
-    },
-    {//Explore the mansion 7 
-        text: "Following the corridors of the mansion, you are led into the ballroom. The grand ballroom stands breathtaking in sight. Tall mirrors stand at each end reflecting the crystal centerpiece. You turn towards them noticing your reflection wavering ever so slightly on the right-hand side. Velvet drapes frame the mirrors adorned with red and gold. Frescos of mythical battles line the walls and ceiling. Your gaze waltzes around the room landing on the grand piano tucked away in the corner. Atop it, the glint of a token catches your gaze.",
-        image: "images-js/ballroom.jpg",
-        choices: ["Inspect the locket", "Inspect the mirror"]
-    },
-    {//Inspect the locket 8 -------------------- THE LOCKET PATHWAY
-        text: "You head towards the grand piano and gently pick up the discarded locket. The piece of jewelry is splattered with blood. It takes the shape of a silver heart with the initials C.K. engraved on the front. You notice a clasp on the right side of the locket, opening it with a click. Inside stands the image of an unknown man.",
-        image: "images-js/locket.jpeg",
-        choices: ["Investigate the initials in the library", "Investigate the unknown man in the portrait gallery"]
-    },
-    {//Investigate the library 9 -------------------- YOU DEAD REPLAY
-        text: "Books scatter every inch of the ancient library as you enter the sanctuary of knowledge. Stained glass windows reflect a kaleidoscope of colors across four large tables lining the grand floor. You make your way towards the bookshelf where the Knight family records are kept. Opening the book you find yourself at a dead end. Your eyes scroll through numerous names, all which seem to have the initials C.K.",
-        image: "images-js/library.jpeg",
-        choices: ["Replay"]
-    },
-    {//Investigate the portrait gallery 10
-        text: "You head across the hall towards the portrait gallery. The walls within the gallery are adorned with paintings of the Knight Family going back generations. You follow the paintings and the corresponding nameplates written underneath them. Your eyes suddenly halt at the heiress, admiring her timeless elegance. She stands with a regal pose, a locket glinting around her neck, and a dress of blue lace draping across her figure. Next to the heiress of the house, your eyes lighten as you are greeted with the portrait of the very same man in the locket. Underneath, his nameplate reads C.K., or rather Caspian Knight. Behind him lies a study.",
-        image: "images-js/gallery.jpeg",
-        choices: ["Investigate the painting further", "Investigate the study"]
-    },
-    {//Investigate the painting further 11
-        text: "Upon closer inspection, it becomes apparent that the painting of Caspian Knight is slightly looser on the wall when compared to the potrait of his heiress adjacent to it. Your hands trail the portraits edge as it shits ajar. A vault lies behind the paintings visage. Inside the vault lies mounds of shimmering gold arranged in piles across the floor.",
-        image: "images-js/vault.jpeg",
-        choices: ["Guess the motive, killer, and victim"]
-    },
-    {//Investigate the study 12
-        text: "As you enter the study, the aura of old scholarly charm fills the air. Bookshelves, maps, and sketches lace the walls. An armchair sits in the center next to a once-crackling fireplace. Across from the chair, a wooden mahogany table stands in the center, the draw open ever so slightly. You make your way towards the draw and a gasp falls from your lips. There, among piles of ancient gemstones lies a knife laced with blood hidden in the depths of the draw.",
-        image: "images-js/study.jpeg",
-        choices: ["Guess the motive, killer, and victim"]
     },
     {//MIRROR PATHWAY  13
         text: "You walk up towards the right side mirror, your hand inching towards it almost as if drawn by an unseen strength. The mirror stands as a silent observer, a gateway. On one side it reflects the grand ballroom but on the other, it shadows a lair of secrets.",
@@ -142,46 +146,88 @@ function updateStory() {
         choice2Button.style.display = 'none'; // Hide it
     }
 
+  
+    //to be done
+    if (storyState === 3) { 
+        choice1Button.classList.add('crossed-out');
+    } else {
+        choice1Button.classList.remove('crossed-out');
+    }
+    if (storyState === 6) { 
+        choice2Button.classList.add('crossed-out');
+    } else {
+        choice2Button.classList.remove('crossed-out');
+    }
+    
     storyText.textContent = story[storyState].text;
+
      // Image source
     storyImage.src = story[storyState].image;
+
+      // Show riddle input if the current state is the riddle
+      if (storyState === 10) {
+        riddleInput.style.display = 'block';
+        submitAnswerButton.style.display = 'block';
+        choice1Button.style.display = 'none';
+    } else {
+        riddleInput.style.display = 'none';
+        submitAnswerButton.style.display = 'none';
+        if (storyState === 0) {
+            choice1Button.style.display = 'block'; // Show "Start" button
+        }
+    
+        if (storyState === 12) {
+            choice1Button.textContent = 'Replay';
+            choice1Button.style.display = 'block'; // Make sure replay button is visible
+            choice2Button.style.display = 'none';  // Hide second choice
+        }
+    }
+
  // Final reveal! Visbile/Hidden text that gives player the answer 
- if (storyState === story.length - 1) {
-    finalText1.style.visibility = 'visible';
-    finalText1.addEventListener('click', function() {
-        finalText2.style.visibility = 'visible';
-    });
-} else {
-    finalText1.style.visibility = 'hidden';
-}
+ //if (storyState === story.length - 1) {
+ //   finalText1.style.visibility = 'visible';
+ //   finalText1.addEventListener('click', function() {
+  //      finalText2.style.visibility = 'visible';
+ //   });
+//} else {
+//    finalText1.style.visibility = 'hidden';
+//}
+
     
 }
 
+
+
 //If else statements for buttons and story states 
+
+
 choice1Button.addEventListener('click', function () {
     // Choice 1
+    
     if (storyState >= 0 && storyState < story.length) {
         const choice = story[storyState].choices[0];
-        
-        if (choice === "Go Left") {
+
+
+        if (choice === "Enter the room") {
             // Go to a specific state
-            storyState = 2; // story state
-        } else if (choice === "Go Right") {
-            storyState = 3;
-        } else if (choice === "Proceed to the mansion") {
-            storyState = 4;
-        } else if (choice === "Enter the mansion") {
-            storyState = 5;
-        } else if (choice === "Explore the mansion") {
-            storyState = 7;
-        } else if (choice === "Inspect the locket") {
-            storyState = 8;
-        } else if (choice === "Run Away") {
+            storyState = 3; // story state
+        } else if (choice === "Restart Story") {
             storyState = 0;
+      //  } else if (choice === "Extend Your Hand") {
+        //   choice1Button.classList.add('crossed-out');
+        } else if (choice === "Enter the fear dimension") {
+            storyState = 6;
+        } else if (choice === "Right") {
+            storyState = 7;
+        } else if (choice === "Confront") {
+            storyState = 9;
+        } else if (choice === "Confront the Spirit") {
+            storyState = 10;
+    
         } else if (choice === "Replay") {
             storyState = 0;
-        } else if (choice === "Investigate the painting further") {
-            storyState = 11;
+        } else if (choice === "Ascend the Fear Dimension") {
+            storyState = 0;
         } else if (choice === "Step into the mirror") {
             storyState = 15;
         } else if (choice === "Inspect the keys") {
@@ -204,18 +250,20 @@ choice1Button.addEventListener('click', function () {
     }
 });
 
+
 choice2Button.addEventListener('click', function () {
     // choice 2
     if (storyState >= 0 && storyState < story.length) {
         const choice = story[storyState].choices[1];
-        if (choice === "Go Right") {
-            storyState = 3;
-        } else if (choice === "Inspect the mansion") {
-            storyState = 5;
+    
+        if (choice === "Run Away") {
+            storyState = 2;
+        } else if (choice === "Reject the Spirit") {
+            storyState = 4;
         } else if (choice === "Run Away") {
             storyState = 0; 
-        } else if (choice === "Investigate the unknown man in the portrait gallery") {
-            storyState = 10;
+        } else if (choice === "Befriend") {
+            storyState = 11;
         } else if (choice === "Investigate the study") {
             storyState = 12;
         } else if (choice === "Inspect the mirror") {
@@ -233,6 +281,22 @@ choice2Button.addEventListener('click', function () {
     } else {
 
     }
+
+    
+});
+
+submitAnswerButton.addEventListener('click', function () {
+    const playerAnswer = riddleInput.value.toLowerCase();
+    const correctAnswer = story[storyState].answer.toLowerCase();
+
+    if (playerAnswer === correctAnswer) {
+        // Correct answer logic, advance story
+        storyState = 0;
+    } else {
+        // Wrong answer logic, player dies
+        storyState = 12;
+    }
+    updateStory(); 
 });
 
 

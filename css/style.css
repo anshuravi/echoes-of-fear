@@ -4,7 +4,7 @@ body {
     background-size: cover;
     margin: 0;
     padding: 0;
-    font-family: "Special Elite", system-ui;
+    font-family: 'Pirata One', cursive;
     font-weight: 400;
     font-style: normal;
 }
@@ -15,6 +15,12 @@ body {
     text-align: center;
     color: #3e3e3e;
 }
+
+.pirata-one-regular {
+    font-family: "Pirata One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
 
 #choices {
     display: flex;
@@ -65,4 +71,9 @@ button:focus {
     max-height: 100%;
     width: auto;
     height: auto;
+}
+.crossed-out {
+    text-decoration: line-through;
+    color: red;
+    pointer-events: none;
 }

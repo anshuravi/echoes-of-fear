@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Special+Elite&display=swap" rel="stylesheet">    
-<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knight Mansion</title>
@@ -16,6 +14,8 @@
         <figcaption id="story-text">Knight Mansion</figcaption>
     </figure>
     <section id="choices">
+        <input type="text" id="riddle-answer" style="display: none;" placeholder="Type your answer here">
+<button id="submit-answer" style="display: none;">Answer the Riddle</button>
         <button id="choice1">Choice 1</button>
         <button id="choice2">Choice 2</button>
     </section>  
@@ -24,6 +24,7 @@
     <audio id="background-audio" controls loop>
         <source src="pipe-organ.mp3" type="audio/mpeg">
     </audio>
+    
 </main>
 
     <script src="js/main.js"></script>
