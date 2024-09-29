@@ -12,7 +12,7 @@ const submitAnswerButton = document.getElementById('submit-answer'); // New butt
 // Initial story state
 let storyState = 0;
 //Audio inputs
-backgroundAudio.src = 'pipe-organ.mp3';
+backgroundAudio.src = 'Mansion.mp3';
 backgroundAudio.loop = true;
 //The Story 0
 const story = [
