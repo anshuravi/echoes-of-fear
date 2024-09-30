@@ -83,9 +83,9 @@ const story = [
         choices: ["Replay"]
     },
     {//MIRROR PATHWAY  13
-        text: "You walk up towards the right side mirror, your hand inching towards it almost as if drawn by an unseen strength. The mirror stands as a silent observer, a gateway. On one side it reflects the grand ballroom but on the other, it shadows a lair of secrets.",
-        image: "images-js/mirror.jpeg",
-        choices: ["Step into the mirror", "Return back to the ballroom"]
+        text: "",
+      //  image: "images-js/mirror.jpeg",
+        choices: ["Dive Deeper", "Ascend the Fear Dimension"]
     },
     {//YOU DEAD AGAIN - mirror trap  14
         text: "As you step away from the mirror a chill runs down your spine. Just as your heel brushes against the tile behind you, the mirror breaks into a mist that envelops you.",
@@ -148,16 +148,21 @@ function updateStory() {
 
   
     //to be done
-    if (storyState === 3) { 
+    if (storyState === 3 && 13) { 
         choice1Button.classList.add('crossed-out');
     } else {
         choice1Button.classList.remove('crossed-out');
     }
-    if (storyState === 6) { 
+
+    // Cross out the second button at storyState 6
+    if (storyState === 6 && story[storyState].choices[1] === "Left") { 
         choice2Button.classList.add('crossed-out');
     } else {
         choice2Button.classList.remove('crossed-out');
+
     }
+    
+
     
     storyText.textContent = story[storyState].text;
 
@@ -264,10 +269,8 @@ choice2Button.addEventListener('click', function () {
             storyState = 0; 
         } else if (choice === "Befriend") {
             storyState = 11;
-        } else if (choice === "Investigate the study") {
-            storyState = 12;
-        } else if (choice === "Inspect the mirror") {
-            storyState = 13;
+        } else if (choice === "Ascend the Fear Dimension") {
+            storyState = 0;
         } else if (choice === "Return back to the ballroom") {
             storyState = 14;
         } else if (choice === "Inspect the maps") {
@@ -285,13 +288,14 @@ choice2Button.addEventListener('click', function () {
     
 });
 
+
 submitAnswerButton.addEventListener('click', function () {
     const playerAnswer = riddleInput.value.toLowerCase();
     const correctAnswer = story[storyState].answer.toLowerCase();
 
     if (playerAnswer === correctAnswer) {
         // Correct answer logic, advance story
-        storyState = 0;
+        storyState = 13;
     } else {
         // Wrong answer logic, player dies
         storyState = 12;
