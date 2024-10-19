@@ -49,13 +49,14 @@ button:focus {
 }
 
 .game-container {
-    max-width: 600px;
-    margin: 50px auto;
-    background-color: #f8f0e3;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
-}
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #f8f0e3;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+    }
+    
 
 #final-text-1,
 #final-text-2 {
@@ -77,3 +78,19 @@ button:focus {
     color: red;
     pointer-events: none;
 }
+buttons {
+   
+    padding: 12px 24px; /* Padding for the button */
+   
+    color: #3e3e3e;
+    border: dotted;
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    font-size: 20px; /* Larger font size */
+    
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+buttons:hover {
+    color: red;
+    }

@@ -2,18 +2,25 @@
 const storyText = document.getElementById('story-text');
 const choice1Button = document.getElementById('choice1');
 const choice2Button = document.getElementById('choice2');
-const choice3Button = document.getElementById('choice3'); // New button
+const choice3Button = document.getElementById('choice3'); // Add third button 
 const storyImage = document.getElementById('story-image'); 
 const finalText1 = document.getElementById('final-text-1');
 const finalText2 = document.getElementById('final-text-2');
 const backgroundAudio = document.getElementById('background-audio');
 const riddleInput = document.getElementById('riddle-answer'); // New input
 const submitAnswerButton = document.getElementById('submit-answer'); // New button
+
+
+
+
+
 // Initial story state
+
+
 let storyState = 0;
 //Audio inputs
-backgroundAudio.src = 'Mansion.mp3';
-backgroundAudio.loop = true;
+//backgroundAudio.src = 'Mansion.mp3';
+//backgroundAudio.loop = true;
 //The Story 0
 const story = [
     {// gate illustrtion
@@ -38,8 +45,8 @@ const story = [
     },
     {//Reject the spirit 4 - shattered glass spiral
         text: " An inhumane growl errupts from the cloak shifting the room. 'No,' A simple strangled cry. 'No!' The figure bellows, the once saddened cry growing  enraged. Tormented angry cries echo through the mirrors, when a pull forces you forward through the shattered glass.  ",
-        image: "mirrorshards.png",
-        choices: ["Enter the fear dimension"]
+       image: "mirrorshards.png",
+     choices: ["Enter the fear dimension"]
     },
     {//Accept the spirit 5
         //text: "You extend your hand out, as a gloved hand entwines your fingers. Ghosted arias surround you each note blowing like ripples through the air. The spirit is welcoming you, guiding you through a world of fear.",
@@ -54,7 +61,7 @@ const story = [
     {//Right (Judgement fear) 7 -- to be done -- eyes illustration
         text: "You are drawn through a darkened room, shadows clinging to every corner, no hint of light visible. The air is thick as silence follows your every turn creating an endless stillness. You place one foot in front of the other. Through the darkness, two eyes flicker open, red irises glaring like distant stars lost in an abyss. You are no longer alone.",
         image: "eyes.png",
-        choices: [ "Confront", "Befriend"]
+        choices: [ "Confront the figure", "Befriend the figure"]
     },
     {//Run Away 8
        // text: "Without hesitation, you bolt out of the room, heart pounding, a primal instinct driving you forward. Your body pushes forward, but your feet remain motionless in a standstill. A pull forces you down into the Earth sinking deeper... into the next fear.",
@@ -80,63 +87,100 @@ const story = [
     {//You Die 12
         text: "A cackle errupts from the spirit, 'Wrong!' it bellows in a teasing blow. 'Welcome to your new home,' ",
       //  image: "images-js/vault.jpeg",
-        choices: ["Replay"]
+        choices: ["Descend further"]
     },
-    {//MIRROR PATHWAY  13
-        text: "",
+    {//Fear 2 -- heights/falling 13
+        text: "Limbs flail as the chasm continues, no end in sight. Jagged walls rush past like teeth as your hands grasp forward to an emptiness. The merciless drop decends screams bellowing out your throat. A cackle forms through the ripples of wind rushing past you as taunts follow. A jarring stillness cuts through the chaos suspending you in the air.",
       //  image: "images-js/mirror.jpeg",
-        choices: ["Dive Deeper", "Ascend the Fear Dimension"]
+        choices: ["Confront the voice"]
     },
-    {//YOU DEAD AGAIN - mirror trap  14
-        text: "As you step away from the mirror a chill runs down your spine. Just as your heel brushes against the tile behind you, the mirror breaks into a mist that envelops you.",
+    {//confront the spirit fork heights 14
+        text: "You come to a halt landing on top of a cobblestoned platform. Your eyes follow the uneven rocks leading to another forked path. The three paths flying in in front of you shroud in a layer of mist seeming to drop off into thin air, floating and falling. The mist swirls in front of you laying out the words “Only the highest stand silent, while the lowest speak the longest.'Choose a path' the spirit speaks directing you forward.",
         image: "images-js/smoke.jpeg",
-        choices: ["Replay"]
+        choices: ["Left", "Middle", "Right"]
     },
-    {//Step into the mirror 15
-        text: "Inside the mirror lies a realm shadowed with secrets, illuminated only by a circle of candelabras in the center. The air is thick, and stone arches loom over the flickering circle of fire in an unsettling manner. A distant melody fills your ears as you feel yourself drifting into a haze. Moments pass until the music abruptly stops. Surveying the lair, you notice two corridors twisting like unruly branches.",
+    {//Left path 15
+        text: "You take cautious steps towards the left pathway. The mist holding the riddle seems to follow your every move in a hissing wave. Suddenly the swirling mist halts before tumbling down into a deep chasm. You gasp the sound echoing loudly in a descending manner against your ears.",
         image: "images-js/candle.png",
-        choices: ["Follow the left corridor", "Follow the right corridor"]
+        choices: ["Walk toward the chasm", "Turn back"],
+        echo: true
     },
-    {//Left corridor -- buter's room 16
-        text: "You go left heading down a stone-stepped alley. Through the alley and to the right is a wooden door. You creak open the door to find yourself in a modest yet dignified space. The room is small, and far less extravagant than the rest of the house. It is however the most tidy, signifying that this must be the Butler's Quarters. A single bed lies in the corner, and a wardrobe stands across from it. The only thing that doesn't appear to belong is the table in the middle. Scrolls of unruly maps line the surface of the table, a set of keys used as a paperweight.",
+    {//Left path win 16
+        text: "As the echoes of your gasps come to a close, you feel the mist, swirling gently around you, beckoning you forward. The form resembles a familiar cloaked figure, whispers of assurance and ease filling your ears. The mist then parts revealing a narrow, hidden staircase carved into the side of the chasm. A faint otherworldly glow, guides you downward.",
         image: "images-js/servantsroom4.png",
-        choices: ["Inspect the keys", "Inspect the maps"]
+        choices: ["Ascend the fear dimension"]
     },
-    {// YOU DIE Key trap 17
-        text: "You reach out towards the keys fingers tingling with anticipation. As soon as you touch the cold metal, another sensation overcomes you. Poison drips through your veins consuming your very being.",
+    {// Left path: choose to replay or dive deeper 17
+        text: "Inching forward you decend the weaving staircase. The faint glow flickers, casting shadows that dance along the stone walls. The glow brightens, as you find yourself staring at a single flame dancing in the room full of mirrors.'",
         image: "images-js/keys.jpeg",
-        choices: ["Replay"]
+        choices: ["Replay", "Dive Deeper)"]
     },
-    {//Inspect the maps 18
-        text: "You decide to examine the maps spread along the table. Moving closer realization dawns on your features. These are maps of the manor. In the midst of black ink, a single red ‘X’ catches your eye. Across the map of the upper floor, the red ‘X’ marks Caspian Knight's chambers. ",
+    {//Middle path: throws you in further 18
+        text: "The path straight ahead feels the most fitting as you waltz forward. A rush of air ripples the skin across your face as the mist surrounds you once again. You push forward placing one foot in front of the other until your foot hits a rock. Silence follows the uneven stone clambering down. An echo ever so slightly follows as the rubble reaches the ground.",
         image: "images-js/map.jpeg",
-        choices: ["Head to Caspian's chambers"]
+        choices: ["Descend down the middle chasm", "Turn back"]
     },
-    {//Inspect the maps 19
-        text: "Caspian Knight's room is cold, covered in an aura of darkness. The walls seem to cave in towards the towering four-poster bed draped in a red fabric. You move forward cautiously, lines of armored suits of armor surrounding the room as if protecting the room from outsiders. You continue towards the bedframe pushing aside the curtains to reveal a jewelry box adorned with the heiress’ crest. A fireplace catches your eye across from the bed, its flames still burning. You move to the fireplace peering down and seeing a heap of abandoned clothing. Your eyes widen, the discarded garments are spotted with blood.",
+    {//Descend down the middle 19
+        text: "'For a moment, all is still, until the mist coils tighter, like a snake wrapping around you. The air shifts unnaturally, and suddenly the ground beneath you begins to spiral. Whispers fill your senses as the writhing the mist takes the spirit's cloaked form. Within seconds, you find yourself tumbling through the thickened air once again.",
         image: "images-js/room.png",
-        choices: ["Guess the motive, killer, and victim"]
+        choices: ["Another fear awaits"]
     },
     {//Go to the right corridor 20
-        text: "You turn right heading down another hallway engulfed in darkness. At first glance the shadowed path appears to be deserted, a black hole of emptiness. That is until you notice a faint outline, the stone of the wall changing in pattern ever so slightly. A heavy door slowly comes into view.",
+        text: "The path ahead shrouds in shadows yet an intruige rushes you forward. You peer forward seeking the path's answers. Nothing but darkness returns to your senses.",
         image: "images-js/door.jpeg",
-        choices: ["Push through the door"]
+        choices: ["Descend the darkness", "Turn back"]
     },
-    {//FINAL SOLUTION 21
-        text: "",
+    {//Right - path - death 21
+        text: "You step forward, cautiously, but with each step, the darkness engulfs your body, turning into a suffocating force. You twist and turn becoming one with the darkness, lost in the land of fears forever. ",
         image: "images-js/glass.png",
         choices: ["Replay"]
+
+    },
+     {//Go to the right corridor 22
+        text: "As the words leave your lips, a sense of warmth and relief washes over you. A lightness spreads through your fingertips, the burdens of fear shed from your shoulders. A final flicker of red eyes glow as you step through the mirror manifesting in front of you. With a step forward, your reflection pools into a silvery potion ascending you from the dimension of fear.",
+        image: "images-js/door.jpeg",
+        choices: ["Descend the darkness", "Turn back"]
+    },
+
+    {//Shifting Room Puzzle 6 -- Shifting Room
+        text: "The room seems to twist and turn, pulling you into a maze of corridors. Each door leads to another shifting space.",
+        image: "shiftingroom.png",
+        choices: ["Go North", "Go East", "Go West"],
+        puzzle: true // Flag to track if it's the shifting room puzzle
+
     }
+    
 ];
 
 // story text and choices
-function updateStory() {
+function updateStory() { 
+    
+    if (story[storyState].puzzle) {
+        storyText.textContent = `You are in ${rooms[currentRoom]}. Which way will you go?`;
+        choice1Button.textContent = "Go North";
+        choice2Button.textContent = "Go East";
+        choice3Button.textContent = "Go West";
+        choice3Button.style.display = 'block';
+        riddleInput.style.display = 'none';
+        submitAnswerButton.style.display = 'none';
+    } else if (story[storyState].riddle) {
+        storyText.textContent = story[storyState].text;
+        storyImage.src = story[storyState].image;
+        riddleInput.style.display = 'block';
+        submitAnswerButton.style.display = 'block';
+        choice1Button.style.display = 'none';
+        choice2Button.style.display = 'none';
+        choice3Button.style.display = 'none';
+    } else {
+    
     storyText.textContent = story[storyState].text;
     choice1Button.textContent = story[storyState].choices[0];
     choice2Button.textContent = story[storyState].choices[1];
 
     storyText.textContent = story[storyState].text;
     choice1Button.textContent = story[storyState].choices[0];
+
+    }
 
     // If there is no second choice, hide the button. If there is a second choice show it. 
     if (story[storyState].choices.length > 1) {
@@ -146,6 +190,16 @@ function updateStory() {
         choice2Button.style.display = 'none'; // Hide it
     }
 
+    
+      // If there is a third choice, show the third button; otherwise, hide it
+      if (story[storyState].choices.length > 2) {
+        choice3Button.style.display = 'block'; // Show it
+        choice3Button.textContent = story[storyState].choices[2];
+    } else {
+        choice3Button.style.display = 'none'; // Hide it
+    }
+
+    
   
     //to be done
     if (storyState === 3 && 13) { 
@@ -155,12 +209,12 @@ function updateStory() {
     }
 
     // Cross out the second button at storyState 6
-    if (storyState === 6 && story[storyState].choices[1] === "Left") { 
-        choice2Button.classList.add('crossed-out');
-    } else {
-        choice2Button.classList.remove('crossed-out');
+    //if (storyState === 6 && story[storyState].choices[1] === "Left") { 
+    //    choice2Button.classList.add('crossed-out');
+    //} else {
+    //    choice2Button.classList.remove('crossed-out');
 
-    }
+    //}
     
 
     
@@ -170,7 +224,7 @@ function updateStory() {
     storyImage.src = story[storyState].image;
 
       // Show riddle input if the current state is the riddle
-      if (storyState === 10) {
+      if (storyState === 10 || storyState === 17) {
         riddleInput.style.display = 'block';
         submitAnswerButton.style.display = 'block';
         choice1Button.style.display = 'none';
@@ -182,11 +236,34 @@ function updateStory() {
         }
     
         if (storyState === 12) {
-            choice1Button.textContent = 'Replay';
+            choice1Button.textContent = 'Descend further';
             choice1Button.style.display = 'block'; // Make sure replay button is visible
             choice2Button.style.display = 'none';  // Hide second choice
         }
+        if (story[storyState].echo) {
+            document.getElementById('listen-echo').style.display = 'block'; // Show the echo button
+        } else {
+            document.getElementById('listen-echo').style.display = 'none'; // Hide the echo button
+        }
+        document.getElementById('listen-echo').addEventListener('click', function() {
+            echoSound.play(); // Play the echo sound effect
+        });
+
+        if (story[storyState].noise) {
+            document.getElementById('listen-noise').style.display = 'block'; // Show the noise button
+        } else {
+            document.getElementById('listen-noise').style.display = 'none'; // Hide the noise button
+        }
+        document.getElementById('listen-noise').addEventListener('click', function() {
+            noiseSound.play(); // Play the noise sound effect
+        });
+           
+            
+
+        
     }
+  
+    
 
  // Final reveal! Visbile/Hidden text that gives player the answer 
  //if (storyState === story.length - 1) {
@@ -224,7 +301,7 @@ choice1Button.addEventListener('click', function () {
             storyState = 6;
         } else if (choice === "Right") {
             storyState = 7;
-        } else if (choice === "Confront") {
+        } else if (choice === "Confront the figure") {
             storyState = 9;
         } else if (choice === "Confront the Spirit") {
             storyState = 10;
@@ -233,14 +310,32 @@ choice1Button.addEventListener('click', function () {
             storyState = 0;
         } else if (choice === "Ascend the Fear Dimension") {
             storyState = 0;
-        } else if (choice === "Step into the mirror") {
+        } else if (choice === "Befriend the voice") {
+            storyState = 14;
+        } else if (choice === "Ascend") {
             storyState = 15;
-        } else if (choice === "Inspect the keys") {
+        } else if (choice === "Confront the voice") {
+            storyState = 14;
+        } else if (choice === "Taunt the spirit") {
             storyState = 17;
-        } else if (choice === "Head to Caspian's chambers") {
+        } else if (choice === "Descend further") {
+            storyState = 13;
+        } else if (choice === "Left") {
+            storyState = 15;
+        } else if (choice === "Walk towards the chasm") {
+            storyState = 16;
+        } else if (choice === "Descend down the middle chasm") {
             storyState = 19;
-        } else if (choice === "Push through the door") {
-            storyState = 19;
+        } else if (choice === "Descend the darkness") {
+            storyState = 21;
+        } else if (choice === "Another fear") {
+            storyState = 21;
+
+
+
+    
+
+            
        
         }  else if (choice === "Guess the motive, killer, and victim") {
                 storyState = story.length - 1; // Final state of story
@@ -267,16 +362,20 @@ choice2Button.addEventListener('click', function () {
             storyState = 4;
         } else if (choice === "Run Away") {
             storyState = 0; 
-        } else if (choice === "Befriend") {
+        } else if (choice === "Befriend the figure") {
             storyState = 11;
         } else if (choice === "Ascend the Fear Dimension") {
             storyState = 0;
-        } else if (choice === "Return back to the ballroom") {
-            storyState = 14;
-        } else if (choice === "Inspect the maps") {
-            storyState = 18;
+        } else if (choice === "Confront the voice") {
+            storyState = 16;
+        } else if (choice === "Left") {
+            storyState = 13;
         } else if (choice === "Follow the right corridor") {
             storyState = 20;
+        } else if (choice === "Turn back") {
+            storyState = 14;
+        } else if (choice === "Middle") {
+            storyState = 18;
         } else {
             storyState++;
         }
@@ -284,25 +383,45 @@ choice2Button.addEventListener('click', function () {
     } else {
 
     }
-
-    
 });
+    choice3Button.addEventListener('click', function () {
+        const choice = story[storyState].choices[2];
+        if (choice === "Right") {
+            storyState = 20;
+        } // Add other conditions as needed...
+        updateStory();
+        
+    });
+    
 
 
-submitAnswerButton.addEventListener('click', function () {
+submitAnswerButton.addEventListener('click', function () { 
     const playerAnswer = riddleInput.value.toLowerCase();
-    const correctAnswer = story[storyState].answer.toLowerCase();
 
+    let correctAnswer;
+    
+    // Check the current story state and set the correct answer accordingly
+    if (storyState === 10) {
+        correctAnswer = 'judgement';  // First riddle answer
+    } else if (storyState === 17) {
+        correctAnswer = 'heights';  // Second riddle answer
+    }
+
+    // Check if the player's answer is correct
     if (playerAnswer === correctAnswer) {
         // Correct answer logic, advance story
-        storyState = 13;
+        if (storyState === 10) {
+            storyState = 22;  // Move forward after answering the first riddle
+        } else if (storyState === 17) {
+            storyState = 18;  // Move forward after answering the second riddle
+        }
     } else {
         // Wrong answer logic, player dies
         storyState = 12;
     }
-    updateStory(); 
-});
 
+    updateStory();  // Update the story based on the new state
+});
 
 
 updateStory();
