@@ -23,7 +23,16 @@
         <button id="choice3">Choice 3</button>
   
     </section>  
-    <audio src="hauntedmystery.mp3" autoplay></audio>
+    <audio id="myAudio">
+        <source src="hauntedmystery.mp3" type="audio/mpeg">
+      </audio>
+      
+      <script>
+        window.onload = function() {
+          var audio = document.getElementById('myAudio');
+          audio.play();
+        };
+      </script>
     <div id="story-text"></div>
 
     

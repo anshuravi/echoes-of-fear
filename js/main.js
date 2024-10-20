@@ -19,8 +19,7 @@ const submitAnswerButton = document.getElementById('submit-answer'); // New butt
 
 let storyState = 0;
 //Audio inputs
-//backgroundAudio.src = 'Mansion.mp3';
-//backgroundAudio.loop = true;
+
 //The Story 0
 const story = [
     {// gate illustrtion
