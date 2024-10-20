@@ -28,10 +28,12 @@
       </audio>
       
       <script>
-        window.onload = function() {
+        document.addEventListener('click', function() {
           var audio = document.getElementById('myAudio');
-          audio.play();
-        };
+          audio.play().catch(function(error) {
+            console.log("Autoplay was prevented: " + error);
+          });
+        });
       </script>
     <div id="story-text"></div>
 
