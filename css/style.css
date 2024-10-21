@@ -55,10 +55,12 @@ button:focus {
     margin: 50px auto;
     background-color: #9CAF88;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 1);
     position: relative; /* Stack relative to the body */
     z-index: 1; /* Higher z-index to ensure it appears above the GIF */
+    height: 760px; /* Fixed height if you want it static */
+    overflow-y: auto;  /* Adds scroll if content exceeds height */
 }
     
 
@@ -109,3 +111,5 @@ buttons:hover {
         z-index: 0; /* Set a lower z-index to be behind other content */
         opacity: 0.3; /* Optional: Adjust opacity for a translucent effect */
     }
+
+    
