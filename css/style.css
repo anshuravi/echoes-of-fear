@@ -51,7 +51,7 @@ button:focus {
 }
 
 .game-container {
-    max-width: 40%;
+    max-width: 30%;
     margin: 50px auto;
     background-color: #9CAF88;
     padding: 20px;
