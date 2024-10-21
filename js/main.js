@@ -292,7 +292,7 @@ const story = [
 },
  {//fear of change puzzle 52 --- add riddle
     text: "You turn looking into the glowing red eyes once again. The spirit lets out a chuckle, 'I can bring you down with a single burn, but without me you will never learn'",
-    image: "images-final/failure.png",
+    image: "failure2.png",
     answer: "failure", // Correct answer
     choices: ["Answer the Riddle"],
 },
