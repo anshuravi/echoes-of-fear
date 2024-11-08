@@ -11,6 +11,20 @@ const riddleInput = document.getElementById('riddle-answer'); // New input
 const submitAnswerButton = document.getElementById('submit-answer'); // New button
 
 
+// Initial story state
+const clickSound = new Audio('clickSound.mp4'); // Replace 'clickSound.mp3' with the path to your audio file
+
+// Function to play the sound
+function playClickSound() {
+    clickSound.play();
+}
+
+// Add event listeners to buttons to play the sound on click
+choice1Button.addEventListener('click', playClickSound);
+choice2Button.addEventListener('click', playClickSound);
+choice3Button.addEventListener('click', playClickSound);
+submitAnswerButton.addEventListener('click', playClickSound); // Optional for the submit button
+
 
 
 
@@ -24,32 +38,32 @@ let storyState = 0;
 const story = [
     {// gate illustrtion
         text: "Echoes of Fear",
-        image: "door3.png",
+        image: "images-js/start.png",
         choices: ["Start Story"]
     },
     { //Starting screen 1 - candle illustration
-        text: "A single wavering flame blinks across your eyes, the rest of the room engulfed in an eerie darkness. The blaze wavers and the brightness surges, luring you further into the expanse. A single step forward echoes against the walls.",
-        image: "images-final/singleflame.png",
-        choices: ["Enter the room", "Run Away"],
+        text: "A lonely mirror stands in the corner of a room, your reflection wavering in the distance. A candle lies next to it, a single flame flickering and unassuming. The flame pulls you inward as an uneasy warmth fills your senses.",
+        image: "images-js/flame.png",
+        choices: ["Enter the room", "Run away"],
     },
-    { //Run Away 2 
-        text: "'You ran away in fear, but the darkness consumed you'",
+    { //Run away 2 
+        text: "You run away in fear as the echoes of the realm consume you in a never ending darkness.",
         // image: "images-js/mirrorshatter2.png",
         choices: ["Replay"],
     },
     {//Accept or Reject the spirit 3 - mirror with hand sticking out
-        text: "Once echoed steps come to an abrupt halt, the flickering flames following. Silence. A shiver bolts through your spine. A swirling heavy dense of clouds winds like vines twining through limbs. Crack. A cacophony erupts, mirrors crumbling to the floor. A cloaked figure appears through the mist, a gloved hand reaching toward you.",
-        image: "images-final/handandmirror.png",
+        text: "Footsteps echo against the stained walls as step by step you make your way forward. A silence follows as you stop, your distorted reflection whispering back to you. Your eyes draw across the reflected surface, nothing seeming out of the ordinary. Within seconds, a hand bursts through the mirror as shards shatter around you.",
+        image: "images-js/handreach.png",
         choices: ["Extend your hand", "Reject the spirit"]
     },
     {//Reject the spirit 4 - shattered glass spiral
-        text: " An inhumane growl errupts from the cloak shifting the room. 'No,' A simple strangled cry. 'No!' The figure bellows, the once saddened cry growing  enraged. Tormented angry cries echo through the mirrors, when a pull forces you forward through the shattered glass.  ",
-        image: "images-final/mirrorexplosion.png",
+        text: "A wailing cry echoes through the chamber as you cast the hand aside. ‘No,’ The spirit speaks a biting rage filling its voice. The gloved hand shoots out through the mirror once again grabbing your wrist and dragging you into the abyss.",
+        image: "images-js/cracked.png",
         choices: ["Drift onward"]
     },
     {//Accept the spirit 5
-        text: "You extend your hand out, as a gloved hand entwines your fingers. Ghosted arias surround you each note blowing like ripples through the air. The spirit is welcoming you, guiding you through a world of fear.",
-         image: "images-final/accepthefigure.png",
+        text: "The gloved hand reaches forward, leaving a place for your palm and begging you to take its guidance. You draw closer and place your fingers atop the strangers. The spirit’s grasp turns and leads you forward into its realm of fear.",
+         image: "images-js/grab.png",
          choices: ["Venture forth"]
     },
     {//Into the fear dimension 6 -- to be done pathway illustration
@@ -58,54 +72,54 @@ const story = [
         choices: ["Right", "Left"]
     },
     {//Right (Judgement fear) 7 -- to be done -- eyes illustration
-        text: "You are drawn through a darkened room, shadows clinging to every corner, no hint of light visible. The air is thick as silence follows your every turn creating an endless stillness. You place one foot in front of the other. Through the darkness, two eyes flicker open, red irises glaring like distant stars lost in an abyss. You are no longer alone.",
-        image: "images-final/spiriteyes.png",
+        text: "You find yourself drawn into a darkened chamber, nothing seemingly in sight. Blinded by darkness, you reach around you and hope to find a way forward. Your eye catches a glint in the darkness as red irises glare back at you. With every hesitant gesture, the eyes begin to follow and narrow at your missteps.",
+        image: "images-js/spiriteyes.png",
         choices: ["Confront the figure", "Befriend the figure"]
     },
-    {//Run Away 8
+    {//Run away 8
         // text: "Without hesitation, you bolt out of the room, heart pounding, a primal instinct driving you forward. Your body pushes forward, but your feet remain motionless in a standstill. A pull forces you down into the Earth sinking deeper... into the next fear.",
         // image: "images-js/ballroom.jpg",
         // choices: ["Descend"]
     },
     {//Confront 9n-- to be done -- 
         text: "Opening your eyes, you take a closer look. Those irises are not unfamiliar. A laugh escapes from your lips.",
-        image: "images-final/spirit.png",
-        choices: ["Confront the Spirit"]
+        image: "images-js/fullspirit.png",
+       choices: ["Confront the Spirit"]
     },
     {//Confront 10 -- to be done -- cloak illustration
-        text: "As you lock eyes with the spirit a chill runs down your spine. The booming voice echoes once again, 'I measure every debate, yet I am without weight. What am I?'",
-        image: "images-final/justicescales.png",
+        text: "You lock eyes with the spirit, a chill running down your spine. A booming voice echoes through the darkened chamber, 'I am a watchful eye, yet my words do not always gratify. What am I?'",
+        image: "images-js/mallet.png",
         answer: "judgement", // Correct answer
         choices: ["Answer the Riddle"]
     },
     {//Ascend 11
-        text: "You slowly drift your eyes shut feeling the darkness engulf you, the dreary pair of irises no longer in site. A breath in and a breath out, the eyes no longer stare. The darkness that once clinged to you, begins to fall like dripping paint across your limbs. Glimmers of light breach through the thickened blackness.",
-        //  image: "images-final/lightpeakingthrough.png",
-        choices: ["Ascend the Fear Dimension"]
+        text: "As the word drops from your lips, the spirit’s eyes gleam with pride. 'Ah yes, judgment, the force that holds so many of us back, but, not you.'  The atmosphere surrounding you shifts and the once darkened room begins to lighten. In place of darkness lies the lonely mirror, the single flame wavering next to it.",
+          image: "images-js/light.png",
+        choices: ["Ascend the fear dimension"]
     },
     {//You Die 12
-        text: "A cackle errupts from the spirit, 'Wrong!' it bellows in a teasing blow. 'Welcome to your new home,' ",
+        text: "A cackle erupts from the spirit, 'Wrong!' it bellows in a teasing blow. 'Welcome to your new home,' ",
         //  image: "images-js/vault.jpeg",
         choices: ["Replay"]
     },
     {//Fear 2 -- heights/falling 13
-        text: "Limbs flail as the chasm continues, no end in sight. Jagged walls rush past like teeth as your hands grasp forward into emptiness. The merciless drop descends, screams bellowing out of your throat. A cackle forms through the ripples of wind rushing past you as taunts follow. A jarring stillness cuts through the chaos, suspending you in the air.",
+        text: "Limbs flail as you descend the abyss of fear. The spirit's cackles echo through the whooshing air as you close your eyes and brace for impact. Silence. An unexpected stillness follows as you find yourself suspended mid-air, a forking path in front of you. The spirit manifests in front of you and releases you to the floor. ‘The highest echo silent, while the lowest, violent. Face the fear of heights and escape this plight. Choose a path’",
         //  image: "images-js/mirror.jpeg",
         choices: ["Confront the voice"]
     },
     {//confront the spirit fork heights 14
-        text: "You come to a halt landing on top of a cobblestoned platform. Your eyes follow the uneven rocks leading to another forked path. The three paths lying in in front of you shroud in a layer of mist seeming to drop off into thin air, floating and falling. The mist swirls in front of you laying out the words 'Only the highest stand silent, while the lowest cry violent. Face the fear and escape is near. Choose a path' the spirit speaks directing you forward.",
-        image: "images-final/threepaths.png",
+        text: "Limbs flail as you descend the abyss of fear. The spirit's cackles echo through the whooshing air as you close your eyes bracing for impact. Silence. An unexpected stillness follows as you find yourself suspended mid-air, a forking path in front of you. The spirit manifests in front of you, releasing you to the floor. ‘The highest echo silent, while the lowest, violent. Face the fear and escape is near. Choose a path’",
+        image: "images-js/threepaths.png",
         choices: ["Left", "Middle", "Right"]
     },
     {//Left path 15
-        text: "You take cautious steps towards the left pathway. The mist holding the riddle seems to follow your every move in a hissing wave. Suddenly the swirling mist halts before tumbling down into a deep chasm. You gasp the sound echoing loudly against your ears.",
-        image: "images-final/mistypath.png",
+        text: "You tread down the left path as a pebbled trail meets your footsteps. Rocky ridges cut through thick air mimicking an uneasiness within. A pain stings across your toes as rubble tumbles into the left chasm echoing loudly against the cavern walls.",
+        image: "images-js/rocky.png",
         choices: ["Descend the left chasm", "Turn back"],
         echo: true
     },
     {//Left path loose 16
-        text: "You step forward, cautiously, but with each step, the pull intensifies, turning into a suffocating force. The air grows cold, and the hissing sound of the mist turns into whispers, distorted and menacing. The ground beneath you trembles slightly, and a deep rumble echoes through the chasm as you tumble down becoming one with the darkness.",
+        text: "The illusion of a short descent vanishes as limbs flail once again. Falling. A scream erupts from you, the chasm engulfing you whole as you become one with the darkness.",
        // image: "images-js/servantsroom4.png",
         choices: ["Replay"]
     },
@@ -115,23 +129,23 @@ const story = [
         choices: ["Return to safety", "Dive deeper"]
     },
     {//Middle path: throws you in further 18
-        text: "The path straight ahead is rockier now, a tumble of uneven ridges that seem to rise and fall like the spine of the spirit. Pebbles skitter underfoot, some clambering down the chasm, an echo ever so slightly following.",
-        image: "images-final/rockypath.png",
+        text: "You look straight ahead, mist weaving around your legs like vines as you descend the path in front of you. The haze pushes forward and tumbles down the chasm up ahead. A gasp escapes your lips and echoes ever so slightly across the cavern as you nearly lose your footing.",
+        image: "images-js/misty.png",
         choices: ["Descend the middle chasm", "Turn back"]
     },
     {//Descend down the middle 19
-        text: "'For a moment, all is still until the mist returns coiling like a serpent. The air shifts unnaturally, and suddenly the ground beneath you begins to twist. Shadows rise from the mist, slithering up your legs. Whispers fill your senses. Writhing the mist takes the spirits cloaked from and bellows “Wrong!” You find yourself tumbling through the thickened air once again.",
+        text: "‘So close!’ The spirit’s voice hisses from behind. Cold air winds around, goosebumps ghosting your skin. The spirit cackles, pushing you down the chasm.",
        // image: "images-js/room.png",
         choices: ["Another fear awaits"]
     },
     {//Go to the right corridor 20
-        text: "An irresistible pull tugs at you, guiding you toward the right path, as if the very air whispers for you to follow. You peer forward seeking the paths answers. Nothing but darkness returns to your senses.",
-        //image: "images-js/door.jpeg",
+        text: "An irresistible pull draws you towards the right path. Darkness follows your every step, almost as if guiding you forward. You peek down the right chasm and hope for the path's answers. An emptiness follows as the silence echoes around you.",
+        image: "images-js/darkness.png",
         choices: ["Descend the right chasm", "Turn back"]
     },
     {//Right - path - coorect! 21
-        text: "You take in a long breath, the mist, swirling gently around you, beckoning you forward. The form resembles a familiar cloaked figure, whispers of assurance and ease filling your ears. You dangle one foot across the ledge when you feel a stepping stone caress the bottom of your shoe. The stones cascade down revealing a hidden staircase carved into the side of the chasm. A faint otherworldly glow guides you downward. The glow brightens, as you find yourself staring at a single flame dancing in the room full of mirrors.",
-       // image: "images-final/lightpeakingthrough.png",
+        text: "You dangle your foot over the edge of the chasm. The air beneath begins to glisten, a staircase carving itself out of the emptiness. You descend, the spirit's ghosted hand guiding you down and through the lonely mirror.",
+       image: "images-js/staircase.png",
         choices: ["Ascend the chasms grasp", "Dive deeper"]
     },
     {//Go to the right corridor 22
@@ -140,24 +154,24 @@ const story = [
         // choices: ["Ascend the fear dimension", "Dive "]
     },
     {//fear of change puzzle 23
-        text: "The room begins to whirl into a vortex, pulling you into a maze of corridors. Each door leads to another shifting space, an impossible kaleidoscope of colors forming in front of you. The walls breathe as if alive, shifting closer inward with each step you take. In the center of the vortex, the spirit waits, watching with three white pedestals and the shape of a door behind. The spirit gestures to three paths: one cast in shadow, the air squeezing from the enclosed walls; one open and bright; and the last pulsating with indecision.",
-        image: "images-final/threepaths.png",
+        text: "The room whirls, a vortex pulling you forward into a kaleidoscope of colors. A maze of winding pathways manifests in front of you. In the center, three pristinely white pedestals stand as the spirit wavers behind them. ‘Allow the change, and victory is within range,’ the spirit gestures to the paths ahead. One path lies cast in shadow with walls closing in on itself, one open and bright, and the last pulsating as if alive.",
+        image: "images-js/vortex1.png",
         choices: ["Shadowed path", "Open path", "Pulsating path"]
     },
 // SHADOW PATH FIRST -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     {//Shadowed path 24
-        text: "You kneel squeezing yourself into the ever closing hallway. The walls are snaked in cobwebs pulling the walls in towards you. You crawl picking up your pace as a clock begins to tick. At the end of the path lies an hourglass, the sand cascading down.",
-        image: "images-final/timepiece.png",
-        choices: ["Take the hourglass", "Turn the hourglass"]
+        text: "You crouch down squeezing into the ever-closing hallway of the shadowed path. A gleaming gold timepiece stands at the end of the corridor, its adorned handles pulling you closer. You inch forward towards the hourglass still wary of the walls closing in. With each step, the walls only descend further.",
+        image: "images-js/hourglass.png",
+        choices: ["Leave the hourglass", "Turn the hourglass"]
     },
-    {//Shadowed path - Take the hourglass 25
-        text: "Your hand jolts out and your fingers reach for the time piece. Your hands make contact with the gold handle, yet the hourglass refuses to move. You tumble forwards, the closing walls nearly hitting you. The cobwebs begin to vine, entwining you into their embrace pulling you into their fearsome maze.",
-       // image: "images-js/door.jpeg",
+    {//Shadowed path - Leave the hourglass 25
+        text: "You take a step back from the hourglass, hoping to halt the room from closing in on you. A moment of silence passes before the walls continue to creak with no release in sight. Within moments, the walls collapse and engulf you into the paths of fear.",
+        //image: "images-js/hourglassflip.png",
         choices: ["Replay"]
     },
     {//Shadowed path - Turn the hourglass 26
-        text: "Your fingers reach out seeking the golden handle of the hourglass. The cool of metal grazes your skin as you twist your hand. The time piece moves with you, the sand summersaulting as a glow emits from its center. The walls begin to ease as you stand tall and release the hourglass.",
-       // image: "images-js/door.jpeg",
+        text: "Your fingers reach out and feel the cold metal of the adorned handle. With a swift movement, the sand shifts somersaulting as the hourglass turns. A glow forms from the hourglass as the crushing walls begin to ease and a stillness fills the air.",
+        image: "images-js/hourglassflipped.png",
         choices: ["Explore the open path"]
     },
     {//main room after mirror 27
@@ -166,112 +180,111 @@ const story = [
        // choices: ["Open path", "Pulsating path"]
     },
     {//open path 28
-        text: "The open path smiles in front of you inviting you forward. You feel a lightness in your step as a glowing sun bathes the landscape in golden hues. You take a breath in, a rancid smell suddenly taking told. The illusion around you crumbles the alley in front of you transforms into a darkened hell scape filled with rotten corpses. At the end of the hallway lies a withered rose it’s petals consumed by blackness. A rustic bottle lies at its side.",
-        image: "images-final/rose.png",
-        choices: ["Nurture the rose", "Leave the rose turning back to the light"]
+        text: "You are drawn towards the open path, its sun-kissed hallways inviting you in like a warm hug. A light breeze follows you as plants sprout around in a greenhouse. You take in a deep breath, a sudden rancid smell taking hold. The room darkens and the once lively plants lie withered like corpses scattering the floor. At the end of the path lies the ghost of a rose and a potion vial to its side.",
+        image: "images-js/deadrose.png",
+        choices: ["Nurture the rose", "Leave the rose"]
     },
       {//nurture the rose 29
-        text: "You rush forward disregarding the horrifying scene in front of you. You reach for the vial, it’s silvery blue contents swirling. The cork pops as you Turn the vial, letting the liquid spill over the rose. The rose begins to glisten the darkness dispelling from its very core.  The room follows as sunlight bounces off the walls.",
-        //image: "images-js/door.jpeg",
+        text: "You push forward disregarding the corpsed landscape in front of you. Picking up the vial you tilt the silverly liquid over the rose. Like the first bloom of spring, the withered flower glows and erupts with life. The light pulsates through the room as the greenhouse comes to life once again.",
+        image: "images-js/aliverose.png",
         choices: ["Explore the pulsating path"]
     },
      {//leave the rose 30
-        text: "The corpses lying twisted on the floor begin to rise. You can feel yourself ready to rush out the alley, but your legs root in place, unwilling to obey. The creatures, their features tormented in pure agony engulf you their limbs coiling with yours.",
+        text: "Your breath heaves in and out as the rancid smell fills your lungs. Your feet turn ready to leap back to the light but no movement follows. The withered vines wind around your ankles pulling you down and into their corpsed embrace.",
         //image: "images-js/door.jpeg",
         choices: ["Replay"]
     },
          {//pulsating path 31
-            text: "Thud, thud thud, thud. The pulsating corridor vibrates almost mimicking your own heartbeat. You draw towards the lively path, the vibrations quickening as you enter. A single lonely mirror lies at the end, the pulsations threatening to crack the reflected surface. The mirror shakes with each step forward, your reflection distorting. As reflection meets reality, a single shard cracks to the floor.",
-            image: "images-final/mirrorshard.png",
-            choices: ["Pick up the shard", "Return the shard to the mirror"]
+            text: "The path before you breathes life as the walls pulsate like a heartbeat. The lonely mirror stands shattered at the end as you make your way toward the now-familiar reflection. The broken shards appear in front of you like puzzle pieces, your cracked resolve echoing through them.",
+            image: "images-js/shard.png",
+            choices: ["Step through the mirror", "Return the shard to the mirror"]
         },
-          {//pulsating path - pick up the shard 32
-            text: "You reach down, fingers trembling, as you pick up the shard.As you hold it, the jagged edge presses into your palm, a string of pain following. Run. Why fix it? Why bother? It's already broken. You break into a run, the shard clasped in your palm, its edges beginning to burn hot. The further you get the stronger it burns, the heat spreading from the shard into your skin. In seconds the heat consumes your very being, your once lively skin replaced with shimmering glass frozen in the realm of fear.",
+          {//pulsating path - Step through the mirror 32
+            text: "The familiar yet cracked reflection looks back at you welcoming you into the mirror. You press onward toward its reflected surface one last time. Only darkness follows your footsteps trapping you in the mirror. On the other side lies a world of nothing, empty and broken.",
           //  image: "images-js/door.jpeg",
             choices: ["Replay"]
         },
 
          {//pulsating path - return the shard 33
-            text: "You reach down picking up the shard, fingers touching the cool reflective surface. You press the shard into the broken mirror, and immediately, a pulse of warm light ripples through the cracks. The jagged edges meld seamlessly, and the mirror begins to heal, the fractures disappearing as the surface becomes whole. What was once broken is whole again.",
-          //  image: "images-js/door.jpeg",
+            text: "You gather the shattered shards and one by one place them back into their original place. The mirror gladly accepts the pieces. The distorted reflection heals itself and your once-broken resolve becomes whole.",
+            image: "images-js/fixedmirror.png",
             choices: ["Return to the main hall"]
         },
             {//pedestals 34 -- add in a riddle box 
-                text: "You return to the main room, your eyes returning to the spirit’s as you walk toward the pedestals. The mirror, hourglass, and rose artifacts lay in front of you. The spirit’s voice booms once again “In times embrace, change takes flight, A broken bloom fades, yet sees the light, Embrace the fear, and the reflection will overwrite” Place the objects upon the pedestal in order.",
-                image: "images-final/threepillars.png",
-                answer: "hourglass, rose, mirror", // Correct answer
-                 choices: ["artifact 1, artifact 2, artifact 3"],
-            },
+                text: "The kaleidoscope of colors comes back into view as you return to the main hall. The spirit awaits in front of the three pedestals. Above each plinth mist swirls. The words time, growth, and reflection float over the pedestals. ‘To be free, place objects according to their key’",
+                image: "images-js/pedestals.png",
+                //answer: "hourglass, rose, mirror", // Correct answer
+                 choices: ["Mirror, Rose, Hourglass", "Hourglass, Rose, Mirror", "Rose, Mirror, Hourglass" ] },
 // OPEN PATH FIRST -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         {//open path 35
-        text: "The open path smiles in front of you inviting you forward. You feel a lightness in your step as a glowing sun bathes the landscape in golden hues. You take a breath in, a rancid smell suddenly taking told. The illusion around you crumbles the alley in front of you transforms into a darkened hell scape filled with rotten corpses. At the end of the hallway lies a withered rose it’s petals consumed by blackness. A rustic bottle lies at its side.",
-        image: "images-final/rose.png",
-        choices: ["Nurture the flower", "Leave the flower turning back to the light"]
+        text: "You are drawn towards the open path, its sun-kissed hallways inviting you in like a warm hug. A light breeze follows you as plants sprout around in a greenhouse. You take in a deep breath, a sudden rancid smell taking hold. The room darkens and the once lively plants lie withered like corpses scattering the floor. At the end of the path lies the ghost of a rose and a potion vial to its side.",
+        image: "images-js/deadrose.png",
+        choices: ["Nurture the flower", "Leave the flower"]
     },
       {//nurture the rose 36
-        text: "You rush forward disregarding the horrifying scene in front of you. You reach for the vial , it’s silvery blue contents swirling. The cork pops as you tip the vial, letting the liquid spill over the rose. The rose begins to glisten the darkness dispelling from its very core.  The room follows as sunlight bounces off the walls.",
-       // image: "images-js/door.jpeg",
+        text: "You push forward disregarding the corpsed landscape in front of you. Picking up the vial you tilt the silverly liquid over the rose. Like the first bloom of spring, the withered flower glows and erupts with life. The light pulsates through the room as the greenhouse comes to life once again.",
+        image: "images-js/aliverose.png",
         choices: ["Explore the shadowed path"]
     },
      {//Shadowed path 37
-        text: "You kneel squeezing yourself into the ever closing hallway. The walls are snaked in cobwebs pulling the walls in towards you. You crawl picking up your pace as a clock begins to tick. At the end of the path lies an hourglass, the sand cascading down.",
-        image: "images-final/timepiece.png",
-        choices: ["Take the timepiece", "Turn the timepiece"]
+        text: "You crouch down squeezing into the ever-closing hallway of the shadowed path. A gleaming gold timepiece stands at the end of the corridor, its adorned handles pulling you closer. You inch forward towards the hourglass still wary of the walls closing in. With each step, the walls only descend further.",
+        image: "images-js/hourglass.png",
+        choices: ["Leave the timepiece", "Turn the timepiece"]
     },
-    {//Shadowed path - Take the hourglass 38
-        text: "Your hand jolts out and your fingers reach for the time piece. Your hands make contact with the gold handle, yet the hourglass refuses to move. You tumble forwards, the closing walls nearly hitting you. The cobwebs begin to vine, entwining you into their embrace pulling you into their fearsome maze.",
+    {//Shadowed path - Leave the hourglass 38
+        text: "You take a step back from the hourglass, hoping to halt the room from closing in on you. A moment of silence passes before the walls continue to creak with no release in sight. Within moments, the walls collapse and engulf you into the paths of fear.",
         //image: "images-js/door.jpeg",
         choices: ["Replay"]
     },
     {//Shadowed path - Turn the hourglass 39
-        text: "Your fingers reach out seeking the golden handle of the hourglass. The cool of metal grazes your skin as you twist your hand. The time piece moves with you, the sand summersaulting as a glow emits from its center. The walls begin to ease as you stand tall and release the hourglass.",
-        //image: "images-js/door.jpeg",
+        text: "Your fingers reach out and feel the cold metal of the adorned handle. With a swift movement, the sand shifts somersaulting as the hourglass turns. A glow forms from the hourglass as the crushing walls begin to ease and a stillness fills the air.",
+        image: "images-js/hourglassflipped.png",
         choices: ["Explore the pulsating path"]
     },
 // PULSATING PATH FIRST -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 {//pulsating path 40
-    text: "Thud, thud thud, thud. The pulsating corridor vibrates almost mimicking your own heartbeat. You draw towards the lively path, the vibrations quickening as you enter. A single lonely mirror lies at the end, the pulsations threatening to crack the reflected surface. The mirror shakes with each step forward, your reflection distorting. As reflection meets reality, a single shard cracks to the floor.",
-    image: "images-final/mirrorshard.png",
-    choices: ["Pick up the shard", "Return the piece to the mirror"]
+    text: "The path before you breathes life as the walls pulsate like a heartbeat. The lonely mirror stands shattered at the end as you make your way toward the now-familiar reflection. The broken shards appear in front of you like puzzle pieces, your cracked resolve echoing through them.",
+    image: "images-js/shard.png",
+    choices: ["Step through the mirror", "Return the pieces to the mirror"]
 },
 
  {//pulsating path - return the shard 41
-    text: "You reach down picking up the shard, fingers touching the cool reflective surface. You press the shard into the broken mirror, and immediately, a pulse of warm light ripples through the cracks. The jagged edges meld seamlessly, and the mirror begins to heal, the fractures disappearing as the surface becomes whole. What was once broken is whole again.",
-    //image: "images-js/door.jpeg",
+    text: "You gather the shattered shards and one by one place them back into their original place. The mirror gladly accepts the pieces. The distorted reflection heals itself and your once-broken resolve becomes whole.",
+    image: "images-js/fixedmirror.png",
     choices: ["Explore the shadow path"]
  },
    {//Shadowed path 42
-    text: "You kneel squeezing yourself into the ever closing hallway. The walls are snaked in cobwebs pulling the walls in towards you. You crawl picking up your pace as a clock begins to tick. At the end of the path lies an hourglass, the sand cascading down.",
-    image: "images-final/timepiece.png",
-    choices: ["Turn the hourglass", "Take the hourglass"]
+    text: "You crouch down squeezing into the ever-closing hallway of the shadowed path. A gleaming gold timepiece stands at the end of the corridor, its adorned handles pulling you closer. You inch forward towards the hourglass still wary of the walls closing in. With each step, the walls only descend further.",
+    image: "images-js/hourglass.png",
+    choices: ["Turn the hourglass", "Leave the hourglass"]
 },
 {//Shadowed path - Turn the hourglass 43
-    text: "Your fingers reach out seeking the golden handle of the hourglass. The cool of metal grazes your skin as you twist your hand. The time piece moves with you, the sand summersaulting as a glow emits from its center. The walls begin to ease as you stand tall and release the hourglass.",
-  //  image: "images-js/door.jpeg",
+    text: "Your fingers reach out and feel the cold metal of the adorned handle. With a swift movement, the sand shifts somersaulting as the hourglass turns. A glow forms from the hourglass as the crushing walls begin to ease and a stillness fills the air.",
+   image: "images-js/hourglassflipped.png",
     choices: ["Explore the opened path"]
 },
 {//open path 44
-    text: "The open path smiles in front of you inviting you forward. You feel a lightness in your step as a glowing sun bathes the landscape in golden hues. You take a breath in, a rancid smell suddenly taking told. The illusion around you crumbles the alley in front of you transforms into a darkened hell scape filled with rotten corpses. At the end of the hallway lies a withered rose it’s petals consumed by blackness. A rustic bottle lies at its side.",
-    image: "images-final/rose.png",
-    choices: ["Leave the rose turning back to the light", "Nurture the rose"]
+    text: "You are drawn towards the open path, its sun-kissed hallways inviting you in like a warm hug. A light breeze follows you as plants sprout around in a greenhouse. You take in a deep breath, a sudden rancid smell taking hold. The room darkens and the once lively plants lie withered like corpses scattering the floor. At the end of the path lies the ghost of a rose and a potion vial to its side.",
+    image: "images-js/deadrose.png",
+    choices: ["Leave the rose", "Nurture the rose"]
 },
   {//nurture the rose 45
-    text: "You rush forward disregarding the horrifying scene in front of you. You reach for the vial , it’s silvery blue contents swirling. The cork pops as you tip the vial, letting the liquid spill over the rose. The rose begins to glisten the darkness dispelling from its very core.  The room follows as sunlight bounces off the walls.",
-    //image: "images-js/door.jpeg",
+    text: "You push forward disregarding the corpsed landscape in front of you. Picking up the vial you tilt the silverly liquid over the rose. Like the first bloom of spring, the withered flower glows and erupts with life. The light pulsates through the room as the greenhouse comes to life once again.",
+    image: "images-js/aliverose.png",
     choices: ["Return to the main hall"]
 },
  {//leave the rose 46
-    text: "The corpses lying twisted on the floor begin to rise. You can feel yourself ready to rush out the alley, but your legs root in place, unwilling to obey. The creatures, their features tormented in pure agony engulf you their limbs coiling with yours.",
+    text: "Your breath heaves in and out as the rancid smell fills your lungs. Your feet turn ready to leap back to the light but no movement follows. The withered vines wind around your ankles pulling you down and into their corpsed embrace.",
     //image: "images-js/door.jpeg",
     choices: ["Replay"]
  },
  {//fear of change puzzle 47 
-    text: "You place the hourglass, rose, and mirror on the pedestals in that careful order. As the last object settles, the air hums with energy. The spirit’s voice, once commanding, softens, “Turning the hourglass, you embraced the passing of moments you cannot hold. Nurturing the rose, you found beauty in what withers and fades. In the mirror, you saw yourself broken, yet chose to gather the pieces to change.’ No more words are needed as the spirit's approval is felt its form disappearing into mist guiding you back to the room surrounded in reflection the single flame still glowing.",
-   // image: "images-final/threepillars.png",
+    text: "You place the objects atop their respective pedestals. As the last object settles, each one begins to glow, a warmth radiating from their very cores. The spirit bows its head, its approval shifting the thickened air across the realms of fear. Its wavering form disappears into the once lonely mirror guiding you back home and leaving the echoes of fear in the distance.",
+    image: "images-js/pedestalsglow.png",
     choices: ["Ascend the fear dimension"],
 },
  {//fear of change puzzle 48
-    text: "An annoyed growl erupts from the spirit. The pedestals crash to the ground as the vortex in the room quickens. The kaleidoscope of colors dizzies your eyes, its force pulling you into its grasp, all becoming one with the blur.",
+    text: "The spirit glares at you, its red eyes narrowing. The pedestals drop with a thud, the floor encircling into a vortex and plunging you into its wrath.",
    // image: "images-js/door.jpeg",
     choices: ["Replay"],
 },
@@ -281,37 +294,43 @@ const story = [
     choices: ["Replay"],
 },
  {//fear of failure 50
-    text: "The room before you shifts to mimic your childhood home. You reminisce at the happy memories of childhood peering around the space. Echoes of a past life no longer lived sing, as the unhappy memories begin to twist and turn. The room is abruptly filled with broken objects, torn papers, and unfinished projects. The spirit manifests behind you the weight of the past pushing against your shoulders the heaviness overbearing.",
-    image: "images-final/crumpledpaper.png",
+    text: "The mirror swirls once again as it draws you into its cracked embrace. On the other side of its reflected surface, a room lies before you, standing like a distant memory. Echoes of your childhood scatter across the room as the feeling of warmth fills through you. Your eyes draw across the room when a pit falls in your stomach. Unfinished projects, bad tests, crumpled papers, and broken frames litter the floor. The weight of a defeated past presses against your shoulders as the spirit manifests behind you.",
+    image: "images-js/failure.png",
     choices: ["Confront the spirit of fear", "Befriend the spirit of fear"],
 },
  {//fear of change puzzle 51
-    text: "The room before you shifts to mimic your childhood home. You reminisce at the happy memories of childhood peering around the space. Echoes of a past life no longer lived sing, as the unhappy memories begin to twist and turn. The room is abruptly filled with broken objects, torn papers, and unfinished projects. The spirit manifests behind you the weight of the past pushing against your shoulders the heaviness overbearing.",
-    image: "images-final/crumpledpaper.png",
+    text: "The mirror swirls once again as it draws you into its cracked embrace. On the other side of its reflected surface, a room lies before you, standing like a distant memory. Echoes of your childhood scatter across the room as the feeling of warmth fills through you. Your eyes draw across the room when a pit falls in your stomach. Unfinished projects, bad tests, crumpled papers, and broken frames litter the floor. The weight of a defeated past presses against your shoulders as the spirit manifests behind you.",
+    image: "images-js/failure.png",
     choices: ["Confront the spirit of fear", "Befriend the spirit of fear"],
 },
  {//fear of change puzzle 52 --- add riddle
-    text: "You turn looking into the glowing red eyes once again. The spirit lets out a chuckle, 'I can bring you down with a single burn, but without me you will never learn'",
-    image: "failure2.png",
+    text: "Despite the weight pressing against your shoulders, you turn around to face the spirit. The hint of a smirk glistens on the spirit’s lips. ‘Without me it is impossible to learn, but I can bring you down with a bad midterm. What am I?’",
+    image: "images-js/failurequestion.png",
     answer: "failure", // Correct answer
     choices: ["Answer the Riddle"],
 },
  {//fear of change -- correct 53
-    text: "The failures that once clouded the room begin to lift. Cracked objects start to repair themselves, as crumpled papers vanish entirely. The room gradually fills with a soft light, a sense of hope emerging from the dark. The door of the room swings open revealing the the chamber of reflections, the single flame still burning.",
-   // image: "images-js/door.jpeg",
+    text: "The room begins to shift. Once scattered failures begin to disappear, only the memory of their life lessons remaining. The spirit gestures as the room swirls revealing the single flame gleaming against the lonely mirror.",
+   image: "images-js/uncrumpledpaper.png",
     choices: ["Ascend the fear dimension"],
  },
  {//fear of change -- wrong 54
-    text: "The spirit cackles watching with expectant eyes, its gaze hardening with every moment. Its form shifts, the weight of mistakes crashing down on you, engulfing you in the clutch of failure.'",
+    text: "‘Failure. Constant failure.’ The spirit’s presence weighs heavier and heavier crushing you to the ground. You lie still, the failures engulfing you into their grasp.",
    // image: "images-js/door.jpeg",
     choices: ["Replay"],
  },
   {//fear of change -- befriend the spirit 55
-    text: "You look around the room, taking in your past. Each one, once life threatening, shaped you into who you are today. Failure’s wrath did not crush you, instead, it guided you to strength. You turn, standing before the spirit looking into its red eyes. The spirit bows its head as the room dissolved into the chamber of reflections the single light aflame.",
-   // image: "images-js/door.jpeg",
+    text: "You glance across the room your eyes weaving through the past failures. Each one was once life-threatening but now lies dormant like a distant memory. Failure did not consume you, and will not consume you. You lock eyes with the red irises as the spirit bows understanding your acceptance. Whisping aside, the spirit manifests the lonely mirror in front of you willing you to step through.",
+   image: "images-js/uncrumpledpaper2.png",
     choices: ["Ascend the fear dimension"],
- }
+ },
 
+    {//Ascend 56
+        text: "A familiar feeling dawns upon you as the eyes draw nearer. Moments ago, the same figure welcomed you into its abyss. You close your eyes as the glaring irises dissolve into nothingness. The weight of the spirit's judgment lifts from your shoulders. The darkness that once clung to you drips away like paint chipping away. Light pierces through as you find yourself across from your reflection and the single wavering flame once again. ",
+        image: "images-js/failureriddle.png",
+        choices: ["Ascend the fear dimension"]
+    }
+ 
 ];
 
 // story text and choices
@@ -386,7 +405,7 @@ function updateStory() {
     storyImage.src = story[storyState].image;
 
     // Show riddle input if the current state is the riddle
-    if (storyState === 10 || storyState === 34 || storyState === 52) {
+    if (storyState === 10 || storyState === 52) {
         riddleInput.style.display = 'block';
         submitAnswerButton.style.display = 'block';
         choice1Button.style.display = 'none';
@@ -501,10 +520,7 @@ choice1Button.addEventListener('click', function () {
      //   } else if (choice === "Right") {
            // storyState = 7;
         } else if (choice === "Confront the figure") {
-            storyState = 9;
-        } else if (choice === "Confront the Spirit") {
             storyState = 10;
-
         } else if (choice === "Replay") {
             storyState = 0;
         } else if (choice === "Ascend the Fear Dimension") {
@@ -533,7 +549,7 @@ choice1Button.addEventListener('click', function () {
             storyState = 23;
         } else if (choice === "Shadowed path") {
             storyState = 24;
-        } else if (choice === "Take the hourglass") {
+        } else if (choice === "Leave the hourglass") {
             storyState = 25;
         } else if (choice === "Explore the open path") {
             storyState = 28;
@@ -541,7 +557,7 @@ choice1Button.addEventListener('click', function () {
             storyState = 29;
         } else if (choice === "Explore the pulsating path") {
             storyState = 31;
-        } else if (choice === "Pick up the shard") {
+        } else if (choice === "Step through the mirror") {
             storyState = 32;
         } else if (choice === "Return to the main hall") {
             storyState = 34;
@@ -549,7 +565,7 @@ choice1Button.addEventListener('click', function () {
             storyState = 36;
         } else if (choice === "Explore the shadowed path") {
             storyState = 37;
-        } else if (choice === "Take the timepiece") {
+        } else if (choice === "Leave the timepiece") {
             storyState = 38;
         } else if (choice === "Explore the shadow path") {
             storyState = 42;
@@ -560,9 +576,11 @@ choice1Button.addEventListener('click', function () {
         } else if (choice === "Turn the hourglass") {
             storyState = 43;
         } else if (choice === "Drift onward") {
-            storyState = 13;
+            storyState = 14;
         } else if (choice === "Ascend the fear dimension") {
             storyState = 0;
+        } else if (choice === "Mirror, Rose, Hourglass") {
+            storyState = 48;  
 
         } else if (choice === "Guess the motive, killer, and victim") {
             storyState = story.length - 1; // Final state of story
@@ -587,15 +605,15 @@ choice2Button.addEventListener('click', function () {
     if (storyState >= 0 && storyState < story.length) {
         const choice = story[storyState].choices[1];
 
-        if (choice === "Run Away") {
+        if (choice === "Run away") {
             storyState = 2;
         } else if (choice === "Reject the spirit") {
             storyState = 4;
 
-        } else if (choice === "Run Away") {
+        } else if (choice === "Run away") {
             storyState = 0;
         } else if (choice === "Befriend the figure") {
-            storyState = 11;
+            storyState = 56;
         } else if (choice === "Ascend the Fear Dimension") {
             storyState = 0;
         } else if (choice === "Confront the voice") {
@@ -612,26 +630,28 @@ choice2Button.addEventListener('click', function () {
             storyState = 23;
         } else if (choice === "Turn the hourglass") {
             storyState = 26;
-        } else if (choice === "Leave the rose turning back to the light") {
+        } else if (choice === "Leave the rose") {
             storyState = 30;
         } else if (choice === "Return the shard to the mirror") {
             storyState = 33;
-        } else if (choice === "Leave the flower turning back to the light") {
+        } else if (choice === "Leave the flower") {
             storyState = 30;
         } else if (choice === "Open path") {
             storyState = 35;
         } else if (choice === "Turn the timepiece") {
             storyState = 39;
-        } else if (choice === "Return the piece to the mirror") {
+        } else if (choice === "Return the pieces to the mirror") {
             storyState = 41;
         } else if (choice === "Nurture the rose") {
             storyState = 45;
-        } else if (choice === "Take the hourglass") {
+        } else if (choice === "Leave the hourglass") {
             storyState = 25;
         } else if (choice === "Venture deeper") {
             storyState = 51;  
         } else if (choice === "Befriend the spirit of fear") {
             storyState = 55;  
+        } else if (choice === "Hourglass, Rose, Mirror") {
+            storyState = 47;
         } else {
             storyState++;
         }
@@ -646,6 +666,8 @@ choice3Button.addEventListener('click', function () {
         storyState = 20;
     } else if (choice === "Pulsating path") {
         storyState = 40;
+    } else if (choice === "Rose, Mirror, Hourglass") {
+        storyState = 48;  
     } // Add other conditions as needed...
     
     updateStory();
@@ -662,8 +684,7 @@ submitAnswerButton.addEventListener('click', function () {
     // Check the current story state and set the correct answer accordingly
     if (storyState === 10) {
         correctAnswer = 'judgement';  // First riddle answer
-    } else if (storyState === 34) {
-        correctAnswer = 'hourglass, rose, mirror';  // Second riddle answer
+  
 } else if (storyState === 52) {
     correctAnswer = 'failure';  // Third riddle answer
 }
@@ -673,8 +694,6 @@ submitAnswerButton.addEventListener('click', function () {
         // Correct answer logic, advance story
         if (storyState === 10) {
             storyState = 11;  // Move forward after answering the first riddle
-        } else if (storyState === 34) {
-            storyState = 47;  // Move forward after answering the second riddle
     } else if (storyState === 52) {
         storyState = 53;  // Move forward after answering the third riddle
     }
@@ -682,8 +701,6 @@ submitAnswerButton.addEventListener('click', function () {
         // Wrong answer logic
         if (storyState === 10) {
             storyState = 12;  // Wrong answer on first riddle, player dies
-        } else if (storyState === 34) {
-            storyState = 48;  // Wrong answer on second riddle, specific action
         } else if (storyState === 52) {
             storyState = 54;  
         }

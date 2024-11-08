@@ -50,6 +50,7 @@ button:focus {
     outline: none;
 }
 
+
 .game-container {
     max-width: 30%;
     margin: 50px auto;
@@ -57,11 +58,21 @@ button:focus {
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 1);
-    position: relative; /* Stack relative to the body */
-    z-index: 1; /* Higher z-index to ensure it appears above the GIF */
-    height: 760px; /* Fixed height if you want it static */
-    overflow-y: auto;  /* Adds scroll if content exceeds height */
+    position: relative;
+    z-index: 1;
+    height: 760px;
+    overflow-y: auto;
+    line-height: 1.5;
+    /* Old paper texture with opacity effect */
+    background-image: url('../papertexture.jpg'); /* Replace with actual image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #9CAF88; /* Ensure the background color is visible */
+    background-blend-mode: multiply; /* Blend image and color */
+   /* opacity: 0.9; /* Adjust transparency for the entire container */
 }
+
     
 
 #final-text-1,
@@ -108,8 +119,14 @@ buttons:hover {
         width: 100vw; /* Full width of the viewport */
         height: 100vh; /* Full height of the viewport */
         object-fit: cover; /* Cover the entire viewport */
-        z-index: 0; /* Set a lower z-index to be behind other content */
+        z-index: 0; /* Set a lower zS-index to be behind other content */
         opacity: 0.3; /* Optional: Adjust opacity for a translucent effect */
+        
     }
 
-    
+    #story-text::first-letter {
+        font-size: 45px; /* Adjust this value as needed */
+        line-height: normal;
+        font-weight: bold;
+        color: #4A1919; /* Optional: Set a color for the first letter */
+    }

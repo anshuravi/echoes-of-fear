@@ -16,24 +16,26 @@
     </figure>
     <section id="choices">
         <input type="text" id="riddle-answer" style="display: none;" placeholder="Type your answer here">
-<button id="submit-answer" style="display: none;">Answer the Riddle</button>
+<button id="submit-answer" style="display: none;">Answer the riddle</button>
         <button id="choice1">Choice 1</button>
         <button id="choice2">Choice 2</button>
         <button id="choice3">Choice 3</button>
   
     </section>  
-    <audio id="myAudio">
+    <audio id="myAudio" loop>
         <source src="hauntedmystery.mp3" type="audio/mpeg">
-      </audio>
-      
-      <script>
+    </audio>
+    
+    <script>
         document.addEventListener('click', function() {
-          var audio = document.getElementById('myAudio');
-          audio.play().catch(function(error) {
-            console.log("Autoplay was prevented: " + error);
-          });
+            var audio = document.getElementById('myAudio');
+            if (audio.paused) {  // Only play if it's not already playing
+                audio.play().catch(function(error) {
+                    console.log("Autoplay was prevented: " + error);
+                });
+            }
         });
-      </script>
+    </script>
     <div id="story-text"></div>
 
     
