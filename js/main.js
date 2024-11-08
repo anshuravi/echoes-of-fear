@@ -2,18 +2,17 @@
 const storyText = document.getElementById('story-text');
 const choice1Button = document.getElementById('choice1');
 const choice2Button = document.getElementById('choice2');
-const choice3Button = document.getElementById('choice3'); // Add third button 
+const choice3Button = document.getElementById('choice3'); 
 const storyImage = document.getElementById('story-image');
 const finalText1 = document.getElementById('final-text-1');
 const finalText2 = document.getElementById('final-text-2');
 const backgroundAudio = document.getElementById('background-audio');
-const riddleInput = document.getElementById('riddle-answer'); // New input
-const submitAnswerButton = document.getElementById('submit-answer'); // New button
+const riddleInput = document.getElementById('riddle-answer'); 
+const submitAnswerButton = document.getElementById('submit-answer');
 
 
 // Initial story state
-const clickSound = new Audio('clickSound.mp4'); // Replace 'clickSound.mp3' with the path to your audio file
-
+const clickSound = new Audio('clickSound.mp4'); 
 // Function to play the sound
 function playClickSound() {
     clickSound.play();
@@ -36,12 +35,12 @@ let storyState = 0;
 
 //The Story 0
 const story = [
-    {// gate illustrtion
+    {
         text: "Echoes of Fear",
         image: "images-js/start.png",
         choices: ["Start Story"]
     },
-    { //Starting screen 1 - candle illustration
+    { //Starting screen 1 
         text: "A lonely mirror stands in the corner of a room, your reflection wavering in the distance. A candle lies next to it, a single flame flickering and unassuming. The flame pulls you inward as an uneasy warmth fills your senses.",
         image: "images-js/flame.png",
         choices: ["Enter the room", "Run away"],
@@ -66,12 +65,12 @@ const story = [
          image: "images-js/grab.png",
          choices: ["Venture forth"]
     },
-    {//Into the fear dimension 6 -- to be done pathway illustration
+    {//Into the fear dimension 6 
         text: "Air whooshes past you, your reflection glaring back at you through shattered shards as you descend the chasm. The spirit's cackle bellows as you fall down darkness surrounding you, 'Into madness you go.' You feel yourself come to a standstill, as two illuminated pathways take shape in front of you.",
         //image: "pathways.png",
         choices: ["Right", "Left"]
     },
-    {//Right (Judgement fear) 7 -- to be done -- eyes illustration
+    {//Right (Judgement fear) 7 
         text: "You find yourself drawn into a darkened chamber, nothing seemingly in sight. Blinded by darkness, you reach around you and hope to find a way forward. Your eye catches a glint in the darkness as red irises glare back at you. With every hesitant gesture, the eyes begin to follow and narrow at your missteps.",
         image: "images-js/spiriteyes.png",
         choices: ["Confront the figure", "Befriend the figure"]
@@ -81,12 +80,12 @@ const story = [
         // image: "images-js/ballroom.jpg",
         // choices: ["Descend"]
     },
-    {//Confront 9n-- to be done -- 
+    {//Confront 9n
         text: "Opening your eyes, you take a closer look. Those irises are not unfamiliar. A laugh escapes from your lips.",
         image: "images-js/fullspirit.png",
        choices: ["Confront the Spirit"]
     },
-    {//Confront 10 -- to be done -- cloak illustration
+    {//Confront 10 
         text: "You lock eyes with the spirit, a chill running down your spine. A booming voice echoes through the darkened chamber, 'I am a watchful eye, yet my words do not always gratify. What am I?'",
         image: "images-js/mallet.png",
         answer: "judgement", // Correct answer
@@ -102,7 +101,7 @@ const story = [
         //  image: "images-js/vault.jpeg",
         choices: ["Replay"]
     },
-    {//Fear 2 -- heights/falling 13
+    {//Fear 2 
         text: "Limbs flail as you descend the abyss of fear. The spirit's cackles echo through the whooshing air as you close your eyes and brace for impact. Silence. An unexpected stillness follows as you find yourself suspended mid-air, a forking path in front of you. The spirit manifests in front of you and releases you to the floor. ‘The highest echo silent, while the lowest, violent. Face the fear of heights and escape this plight. Choose a path’",
         //  image: "images-js/mirror.jpeg",
         choices: ["Confront the voice"]
@@ -668,8 +667,7 @@ choice3Button.addEventListener('click', function () {
         storyState = 40;
     } else if (choice === "Rose, Mirror, Hourglass") {
         storyState = 48;  
-    } // Add other conditions as needed...
-    
+    } 
     updateStory();
 
 });

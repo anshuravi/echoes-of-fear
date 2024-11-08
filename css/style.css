@@ -63,14 +63,12 @@ button:focus {
     height: 760px;
     overflow-y: auto;
     line-height: 1.5;
-    /* Old paper texture with opacity effect */
-    background-image: url('../papertexture.jpg'); /* Replace with actual image path */
+    background-image: url('../papertexture.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: #9CAF88; /* Ensure the background color is visible */
-    background-blend-mode: multiply; /* Blend image and color */
-   /* opacity: 0.9; /* Adjust transparency for the entire container */
+    background-color: #9CAF88; 
+    background-blend-mode: multiply; 
 }
 
     
@@ -97,36 +95,38 @@ button:focus {
 }
 buttons {
    
-    padding: 12px 24px; /* Padding for the button */
+    padding: 12px 24px; 
    
     color: #3e3e3e;
     border: dotted;
-    border-radius: 8px; /* Rounded corners */
-    cursor: pointer; /* Pointer on hover */
-    font-size: 20px; /* Larger font size */
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 20px; 
     
-    transition: background-color 0.3s; /* Smooth transition */
+    transition: background-color 0.3s; 
 }
 
 buttons:hover {
     color: red;
     }
     .background-gif {
-        position: fixed; /* Position it relative to the body */
-
-        top: 0; /* Align to the top */
-        left: 0; /* Align to the left */
-        width: 100vw; /* Full width of the viewport */
-        height: 100vh; /* Full height of the viewport */
-        object-fit: cover; /* Cover the entire viewport */
-        z-index: 0; /* Set a lower zS-index to be behind other content */
-        opacity: 0.3; /* Optional: Adjust opacity for a translucent effect */
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100vw; 
+        height: 100vh;
+        object-fit: cover; 
+        z-index: 0; 
+        opacity: 0.3; 
         
     }
 
     #story-text::first-letter {
-        font-size: 45px; /* Adjust this value as needed */
+        font-size: 45px; 
         line-height: normal;
         font-weight: bold;
-        color: #4A1919; /* Optional: Set a color for the first letter */
+        color: #4A1919; 
+        font-family: "Garamond", "Georgia", serif; 
+        text-shadow: 1px 1px 2px #000, 0 0 1em #333; 
+        padding-right: 2px; 
     }

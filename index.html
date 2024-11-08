@@ -29,7 +29,7 @@
     <script>
         document.addEventListener('click', function() {
             var audio = document.getElementById('myAudio');
-            if (audio.paused) {  // Only play if it's not already playing
+            if (audio.paused) {  
                 audio.play().catch(function(error) {
                     console.log("Autoplay was prevented: " + error);
                 });
@@ -37,6 +37,7 @@
         });
     </script>
     <div id="story-text"></div>
+    <div id="title-text"></div>
 
     
 
